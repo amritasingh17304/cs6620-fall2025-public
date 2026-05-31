@@ -56,7 +56,7 @@ jobs:
             --instance-ids ${{ secrets.EC2_INSTANCE_ID }} \
             --document-name "AWS-RunShellScript" \
             --comment "Automated deployment from GitHub Actions run ${{ github.run_id }}" \
-            --parameters commands='["/usr/bin/docker pull ${{ secrets.DOCKERHUB_USERNAME }}/cs6620-app:latest","/usr/bin/docker stop cs6620-app || true","/usr/bin/docker rm cs6620-app || true","/usr/bin/docker run -d -p 80:5000 --restart unless-stopped --name cs6620-app ${{ secrets.DOCKERHUB_USERNAME }}/cs6620-app:latest"]'
+            --parameters commands='["/usr/bin/docker pull ${{ secrets.DOCKERHUB_USERNAME }}/cs6620-app:latest","/usr/bin/docker stop cs6620-app || true","/usr/bin/docker rm cs6620-app || true","/usr/bin/docker run -d -p 80:3000 --restart unless-stopped --name cs6620-app ${{ secrets.DOCKERHUB_USERNAME }}/cs6620-app:latest"]'
       
       - name: Confirm deployment sent
         run: echo "SSM deployment command sent successfully for run ${{ github.run_id }}"
